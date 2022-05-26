@@ -15,7 +15,7 @@ function App() {
         width: 'width',
       };
       const sortProperty = types[type];
-      const sorted = [...socksJson].sort((a, b) => b[sortProperty] - a[sortProperty]);
+      const sorted = [...socksJson].sort((a, b) => a[sortProperty] > b[sortProperty] ? 1 : -1);
       setData(sorted);
     };
     sortArray(sortType);
@@ -34,6 +34,7 @@ function App() {
       </div>
       <div>
       <select onChange={(e) => setSortType(e.target.value)}> 
+        <option value="">None</option>
         <option value="title">Title</option>
         <option value="height">Height</option>
         <option value="width">width</option>
